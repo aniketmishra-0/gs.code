@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Segoe UI, Arial, sans-serif; }
+    .absentee-table-box {
+      max-width: 800px;
+      margin: 20px auto 0 auto;
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(60,60,60,.12), 0 1.5px 8px rgba(60,60,60,.08);
+      border-radius: 10px 10px 8px 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 16px 14px;
+      text-align: left;
+      font-size: 15px;
+    }
+    th {
+      background: #43a047;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      font-size: 16px;
+      letter-spacing: .5px;
+      text-transform: capitalize;
+    }
+    td {
+      border-top: 1px solid #eeeeeeb0;
+      transition: background 0.3s;
+    }
+    tr {
+      transition: background 0.2s;
+    }
+    tr:nth-child(even) td {
+      background: #f5f7fa;
+    }
+    tr:hover td {
+      background: #e8f5e9;
+    }
+    .absentee-title {
+      font-size: 20px;
+      color: #232323;
+      font-weight: 500;
+      margin-bottom: 13px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="absentee-table-box">
+  <div class="absentee-title">Students absent for 3 consecutive days:</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Grade</th>
+        <th>Student Name</th>
+        <th>Absent Dates</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?!= rows ?>
+    </tbody>
+  </table>
+  </div>
+</body>
+</html>
