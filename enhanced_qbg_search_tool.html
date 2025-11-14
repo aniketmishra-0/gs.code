@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced QBG Search Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background: #282c34;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #search-bar {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        #search-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #dark-mode-toggle {
+            cursor: pointer;
+            padding: 10px;
+            background: none;
+            border: none;
+            color: white;
+        }
+        .favorites, .history {
+            margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            #search-input {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Enhanced QBG Search Tool</h1>
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
+    </header>
+    <div class="container">
+        <div id="search-bar">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button id="search-button">Search</button>
+        </div>
+        <div class="favorites">
+            <h3>Favorites</h3>
+            <ul id="favorites-list"></ul>
+        </div>
+        <div class="history">
+            <h3>Search History</h3>
+            <ul id="history-list"></ul>
+        </div>
+        <div>
+            <h3>Advanced Filters</h3>
+            <label for="filter">Filter by:</label>
+            <select id="filter">
+                <option value="all">All</option>
+                <option value="favorite">Favorites</option>
+                <option value="recent">Recently Added</option>
+            </select>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Enhanced QBG Search Tool</p>
+    </footer>
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const favoritesList = document.getElementById('favorites-list');
+        const historyList = document.getElementById('history-list');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        let history = [];
+        let favorites = [];
+        let darkMode = false;
+
+        function toggleDarkMode() {
+            darkMode = !darkMode;
+            document.body.style.backgroundColor = darkMode ? '#333' : '#f0f0f0';
+            document.body.style.color = darkMode ? '#f0f0f0' : '#333';
+            darkModeToggle.style.backgroundColor = darkMode ? '#555' : '#282c34';
+        }
+
+        function addToHistory(searchQuery) {
+            history.push(searchQuery);
+            updateHistoryList();
+        }
+
+        function updateHistoryList() {
+            historyList.innerHTML = history.map(item => `<li>${item}</li>`).join('');
+        }
+
+        document.getElementById('search-button').onclick = function() {
+            const query = searchInput.value;
+            addToHistory(query);
+            searchInput.value = ''; // Clear input after search
+        };
+
+        darkModeToggle.onclick = toggleDarkMode;
+    </script>
+</body>
+</html>
